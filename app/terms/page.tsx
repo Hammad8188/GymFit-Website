@@ -1,0 +1,1 @@
+export default function TermsPage() { return <div className="container py-10"><h1 className="text-3xl font-black">Terms & Conditions</h1><p className="mt-3 text-zinc-300">Membership terms, billing cadence, and facility conduct are described here.</p></div>; }
