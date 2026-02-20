@@ -22,6 +22,25 @@ const stats = [
   { number: "24/7", label: "Gym Access" },
 ];
 
+const gymGallery = [
+  {
+    src: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200",
+    alt: "Strength training area with modern gym equipment",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=1200",
+    alt: "Group workout class at GymFit",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1591291621164-2c6367723315?w=1200",
+    alt: "Personal trainer coaching a member",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200",
+    alt: "Cardio zone with treadmill row",
+  },
+];
+
 export default function HomePage() {
   return (
     <div className="space-y-24 pb-16">
@@ -90,6 +109,35 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── Gym Gallery ─────────────────────────────────── */}
+      <section className="container">
+        <div className="fade-up text-center mb-10">
+          <h2 className="section-title mx-auto">Inside GymFit</h2>
+          <p className="mt-4 text-zinc-400 max-w-2xl mx-auto">
+            Explore our premium spaces, expert coaching moments, and high-energy atmosphere.
+          </p>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2">
+          {gymGallery.map((image, index) => (
+            <article
+              key={image.src}
+              className="gallery-card animate-on-scroll"
+              style={{ transitionDelay: `${index * 80}ms` }}
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                width={1000}
+                height={700}
+                className="h-64 w-full object-cover md:h-72"
+              />
+              <div className="gallery-card-overlay" />
+              <p className="gallery-card-label">{image.alt}</p>
+            </article>
+          ))}
         </div>
       </section>
 
