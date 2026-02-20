@@ -1,0 +1,1 @@
+export default function PrivacyPage() { return <div className="container py-10"><h1 className="text-3xl font-black">Privacy Policy</h1><p className="mt-3 text-zinc-300">We collect only required contact data for membership and booking support.</p></div>; }
