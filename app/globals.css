@@ -4,12 +4,398 @@
 
 :root {
   color-scheme: dark;
+  --brand: #f97316;
+  --brand-glow: rgba(249, 115, 22, 0.15);
 }
 
+/* ─── Base ─────────────────────────────────────────────── */
 body {
   @apply bg-zinc-950 text-zinc-100;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
 }
 
 .container {
   @apply mx-auto max-w-6xl px-4;
+}
+
+/* ─── Auto-play fade-in animation ──────────────────────── */
+.fade-up {
+  animation: fadeInUp 0.7s ease-out both;
+}
+
+.fade-up-delay-1 {
+  animation: fadeInUp 0.7s ease-out 0.1s both;
+}
+
+.fade-up-delay-2 {
+  animation: fadeInUp 0.7s ease-out 0.2s both;
+}
+
+.fade-up-delay-3 {
+  animation: fadeInUp 0.7s ease-out 0.3s both;
+}
+
+.fade-up-delay-4 {
+  animation: fadeInUp 0.7s ease-out 0.4s both;
+}
+
+.fade-up-delay-5 {
+  animation: fadeInUp 0.7s ease-out 0.5s both;
+}
+
+.fade-up-delay-6 {
+  animation: fadeInUp 0.7s ease-out 0.6s both;
+}
+
+.fade-up-delay-7 {
+  animation: fadeInUp 0.7s ease-out 0.7s both;
+}
+
+.fade-up-delay-8 {
+  animation: fadeInUp 0.7s ease-out 0.8s both;
+}
+
+.fade-left {
+  animation: fadeInLeft 0.7s ease-out both;
+}
+
+.fade-right {
+  animation: fadeInRight 0.7s ease-out 0.2s both;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceSubtle {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes gradientShift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ─── Section Title Accent ─────────────────────────────── */
+.section-title {
+  @apply text-3xl font-black tracking-tight;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand), transparent);
+  border-radius: 2px;
+}
+
+/* ─── Glassmorphism Card ───────────────────────────────── */
+.glass-card {
+  background: rgba(24, 24, 27, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(63, 63, 70, 0.4);
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 15px var(--brand-glow);
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+/* ─── Gradient Text ────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #f97316, #fbbf24, #f97316);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s ease infinite;
+}
+
+/* ─── Buttons ──────────────────────────────────────────── */
+.btn-primary {
+  @apply rounded-lg bg-brand-500 px-5 py-3 font-semibold text-white;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+}
+
+.btn-primary:hover {
+  @apply bg-brand-600;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(249, 115, 22, 0.5);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-outline {
+  @apply rounded-lg border border-zinc-600 px-5 py-3 font-semibold text-zinc-200;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  @apply border-brand-500 text-brand-500;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.15);
+}
+
+/* ─── Glow Badge ───────────────────────────────────────── */
+.badge {
+  @apply inline-block rounded-full bg-brand-500/10 px-3 py-1 text-xs font-semibold text-brand-400 border border-brand-500/20;
+  transition: all 0.3s ease;
+}
+
+.badge:hover {
+  @apply bg-brand-500/20 border-brand-500/40;
+}
+
+/* ─── Stats Counter ────────────────────────────────────── */
+.stat-card {
+  @apply text-center;
+}
+
+.stat-number {
+  @apply text-4xl font-black;
+  background: linear-gradient(135deg, #f97316, #fbbf24);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Hero background glow ─────────────────────────────── */
+.hero-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Animated Underline ───────────────────────────────── */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--brand);
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
+
+.nav-link:hover {
+  color: var(--brand);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ─── Pricing Card Recommended Glow ────────────────────── */
+.pricing-recommended {
+  position: relative;
+  border-color: rgba(249, 115, 22, 0.5) !important;
+  box-shadow: 0 0 40px rgba(249, 115, 22, 0.1), inset 0 1px 0 rgba(249, 115, 22, 0.2);
+}
+
+.pricing-recommended::before {
+  content: '⭐ MOST POPULAR';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background-color: #f97316;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
+}
+
+/* ─── Smooth Table Rows ────────────────────────────────── */
+.schedule-row {
+  transition: background-color 0.3s ease;
+}
+
+.schedule-row:hover {
+  background-color: rgba(249, 115, 22, 0.05);
+}
+
+/* ─── Form Inputs ──────────────────────────────────────── */
+.form-input {
+  @apply w-full rounded-lg bg-zinc-900/80 p-3 text-zinc-100 border border-zinc-800;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  @apply border-brand-500 outline-none;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+}
+
+.form-input::placeholder {
+  @apply text-zinc-500;
+}
+
+/* ─── Testimonial Card ─────────────────────────────────── */
+.testimonial-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  font-size: 80px;
+  font-weight: 900;
+  color: rgba(249, 115, 22, 0.1);
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ─── Scroll Progress ─────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f97316, #fbbf24);
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* ─── Mobile Nav ───────────────────────────────────────── */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background-color: rgba(9, 9, 11, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav.open {
+  transform: translateX(0);
+}
+
+/* ─── FAQ Details ──────────────────────────────────────── */
+details summary {
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ─── Responsive adjustments ───────────────────────────── */
+@media (max-width: 768px) {
+  .section-title {
+    @apply text-2xl;
+  }
+
+  .stat-number {
+    @apply text-3xl;
+  }
+
+  .hero-glow {
+    width: 300px;
+    height: 300px;
+  }
 }
